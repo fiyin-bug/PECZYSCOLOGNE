@@ -1,128 +1,86 @@
-import { useState } from "react"
-import { Mail, Phone, Instagram, Youtube, Music, Headphones, Mic } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
+import React from "react";
+import { motion } from "framer-motion";
 
-const AboutUs = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null)
-
-  const contactInfo = [
-    { icon: Mail, text: "peczyscologne@gmail.com", href: "mailto:peczyscologne@gmail.com" },
-    { icon: Phone, text: "07013084388", href: "tel:07013084388" },
-    { icon: Instagram, text: "Follow us on Instagram", href: "https://www.instagram.com/peczys.c" },
-   
-  ]
-
+export const AboutUs = () => {
   const containerVariants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: {
       opacity: 1,
       scale: 1,
       transition: {
-        duration: 0.5,
-        delay: 0.2,
-        staggerChildren: 0.1,
+        duration: 1.2,  // Slower animation for the entire container
+        staggerChildren: 0.4,  // More time for each child animation to appear
       },
     },
-  }
+  };
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+  const textVariants = {
+    hidden: { y: 50, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
         type: "spring",
         stiffness: 300,
-        damping: 20,
+        damping: 30,  // Slower, softer bounce effect
       },
     },
-  }
-
-  const floatingIcons = [Music, Headphones, Mic]
+  };
 
   return (
-    <div className="bg-gradient-to-br from-black to-gray-900 min-h-screen flex items-center justify-center px-4 py-12 overflow-hidden">
-      {floatingIcons.map((Icon, index) => (
-        <motion.div
-          key={index}
-          className="absolute text-[#c5ac5a] opacity-20"
-          initial={{ x: "-100%", y: "-100%" }}
-          animate={{
-            x: ["100%", "-100%"],
-            y: ["100%", "-100%"],
-          }}
-          transition={{
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "reverse",
-            duration: 20 + index * 5,
-            ease: "linear",
-          }}
-        >
-          <Icon size={50 + index * 20} />
-        </motion.div>
-      ))}
+    <div className="bg-gradient-to-br from-black to-gray-900 min-h-screen text-white flex flex-col items-center justify-center px-4 py-12">
       <motion.div
-        className="bg-black bg-opacity-10 backdrop-blur-lg rounded-xl p-8 max-w-md w-full relative z-10 border border-[#c5ac5a]"
+        className="max-w-4xl w-full text-center"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
+        {/* First Text Section */}
         <motion.h1
-          className="text-4xl font-bold text-center text-white mb-8"
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          className="text-4xl font-extrabold text-[#c5ac5a] mb-8"
+          variants={textVariants}
         >
-          Get in Touch
+          Welcome to Peczyscologne, where every fragrance tells a story!
         </motion.h1>
+
         <motion.p
-          className="text-gray-300 text-center mb-8"
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2, type: "spring", stiffness: 300, damping: 20 }}
+          className="text-lg text-gray-300 mb-12"
+          variants={textVariants}
         >
-          Ready to rock? Reach out to us for any inquiries, collaborations, or just to say hello!
+          Experience the art of captivating and unique oil-based cologne that reflects
+          individuality and style with every spritz. Each scent is carefully crafted to
+          evoke emotions and memories, making every bottle more than just fragrance—it’s
+          an experience.
         </motion.p>
-        <motion.div className="space-y-6">
-          {contactInfo.map((item, index) => (
-            <motion.a
-              key={index}
-              href={item.href}
-              className="flex items-center space-x-4 text-white hover:text-[#c5ac5a] transition-colors duration-300 group relative"
-              variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onHoverStart={() => setHoveredIndex(index)}
-              onHoverEnd={() => setHoveredIndex(null)}
-            >
-              <motion.div
-                className="bg-[#c5ac5a] p-3 rounded-full group-hover:bg-white transition-colors duration-300"
-                whileHover={{ rotate: 360 }}
-                transition={{ type: "spring", stiffness: 300, damping: 10 }}
-              >
-                <item.icon size={24} className="text-black" />
-              </motion.div>
-              <span className="text-lg">{item.text}</span>
-              <AnimatePresence>
-                {hoveredIndex === index && (
-                  <motion.div
-                    className="absolute -inset-2 bg-[#c5ac5a] opacity-20 rounded-lg z-[-1]"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    exit={{ scale: 0 }}
-                  />
-                )}
-              </AnimatePresence>
-            </motion.a>
-          ))}
-        </motion.div>
-        <motion.div className="mt-12 text-center" variants={itemVariants}>
-          <p className="text-gray-400">Let&apos;s create unforgettable moments together!</p>
-        </motion.div>
+
+        {/* Second Text Section */}
+        <motion.h2
+          className="text-3xl font-semibold text-[#c5ac5a] mb-6"
+          variants={textVariants}
+        >
+          Join us on this aromatic journey!
+        </motion.h2>
+
+        <motion.p
+          className="text-lg text-gray-300"
+          variants={textVariants}
+        >
+          Discover the perfect scent that resonates with you. Our collection is designed to
+          help you find a fragrance that suits your unique personality, enhancing your daily
+          moments with an unforgettable essence. Whether you're seeking a signature scent or
+          something new, we’re here to help you find the perfect match.
+        </motion.p>
+      </motion.div>
+
+      {/* Footer */}
+      <motion.div className="mt-12 text-center" variants={textVariants}>
+        <p className="text-gray-400">Let's make every moment unforgettable with Peczyscologne!</p>
       </motion.div>
     </div>
-  )
-}
+  );
+};
 
 export default AboutUs;
+
+
 

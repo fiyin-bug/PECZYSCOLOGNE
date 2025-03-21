@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Mail, Phone, Instagram, Youtube, Music, Headphones, Mic } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
-const ContactUs = () => {
+export const ContactUs = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null)
 
   const contactInfo = [
