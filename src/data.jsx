@@ -133,5 +133,39 @@ export const fragranceFamilies = [
       image: "https://public.readdy.ai/ai/img_res/3757e884b2f131230af5fd3a5653789f.jpg",
     },
   ];
-  
-  // . rest of your existing data (fragranceFamilies, heroSlides, etc.)
+  // New data for Perfume Oils
+// New data for Perfume Oils with real AI-like images from Pexels
+export const oilFragranceFamilies = [
+  { id: "all", name: "All" },
+  { id: "amber", name: "Amber" },
+  { id: "sandalwood", name: "Sandalwood" },
+  { id: "floral", name: "Floral" },
+  { id: "oud", name: "Oud" },
+];
+
+export const featuredOilProducts = [
+  {
+    name: "Amber Bliss",
+    image: "https://images.pexels.com/photos/932577/pexels-photo-932577.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=1",
+    price: 45,
+    family: "amber",
+  },
+  {
+    name: "Sandalwood Dream",
+    image: "https://images.pexels.com/photos/2903089/pexels-photo-2903089.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=1",
+    price: 50,
+    family: "sandalwood",
+  },
+  {
+    name: "Rose Elixir",
+    image: "https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=1",
+    price: 40,
+    family: "floral",
+  },
+  {
+    name: "Oud Majesty",
+    image: "https://images.pexels.com/photos/1549200/pexels-photo-1549200.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=1",
+    price: 60,
+    family: "oud",
+  },
+];
