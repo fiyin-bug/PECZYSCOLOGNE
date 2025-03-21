@@ -146,25 +146,25 @@ export const oilFragranceFamilies = [
 export const featuredOilProducts = [
   {
     name: "Amber Bliss",
-    image: "https://images.pexels.com/photos/932577/pexels-photo-932577.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=1",
+    image: "https://public.readdy.ai/ai/img_res/3757e884b2f131230af5fd3a5653789f.jpg",
     price: 45,
     family: "amber",
   },
   {
     name: "Sandalwood Dream",
-    image: "https://images.pexels.com/photos/2903089/pexels-photo-2903089.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=1",
+    image: 'https://public.readdy.ai/ai/img_res/c5cdc596794835ab5dbade7bc8ae446f.jpg',
     price: 50,
     family: "sandalwood",
   },
   {
     name: "Rose Elixir",
-    image: "https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=1",
+    image: 'https://public.readdy.ai/ai/img_res/c5cdc596794835ab5dbade7bc8ae446f.jpg',
     price: 40,
     family: "floral",
   },
   {
     name: "Oud Majesty",
-    image: "https://images.pexels.com/photos/1549200/pexels-photo-1549200.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=1",
+    image: 'https://public.readdy.ai/ai/img_res/4dfd88b715ede772e147271f0bd70507.jpg',
     price: 60,
     family: "oud",
   },
