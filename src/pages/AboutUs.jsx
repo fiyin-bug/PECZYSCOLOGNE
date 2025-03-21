@@ -1,52 +1,128 @@
-import React from "react";
+import { useState } from "react"
+import { Mail, Phone, Instagram, Youtube, Music, Headphones, Mic } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 
-export const AboutUs = () => {
+const AboutUs = () => {
+  const [hoveredIndex, setHoveredIndex] = useState(null)
+
+  const contactInfo = [
+    { icon: Mail, text: "peczyscologne@gmail.com", href: "mailto:peczyscologne@gmail.com" },
+    { icon: Phone, text: "07013084388", href: "tel:07013084388" },
+    { icon: Instagram, text: "Follow us on Instagram", href: "https://www.instagram.com/peczys.c" },
+   
+  ]
+
+  const containerVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        delay: 0.2,
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 20,
+      },
+    },
+  }
+
+  const floatingIcons = [Music, Headphones, Mic]
+
   return (
-    <section className="py-20 bg-gray-900 min-h-screen">
-      <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-12 text-center text-white">Contact Us</h2>
-        <div className="max-w-lg mx-auto text-gray-300">
-          <p className="mb-6">Have questions? Reach out to us!</p>
-          <form className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block mb-2">Name</label>
-              <input
-                type="text"
-                id="name"
-                className="w-full bg-gray-800 text-white px-4 py-2 rounded-lg focus:outline-none"
-                placeholder="Your Name"
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="block mb-2">Email</label>
-              <input
-                type="email"
-                id="email"
-                className="w-full bg-gray-800 text-white px-4 py-2 rounded-lg focus:outline-none"
-                placeholder="Your Email"
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block mb-2">Message</label>
-              <textarea
-                id="message"
-                className="w-full bg-gray-800 text-white px-4 py-2 rounded-lg focus:outline-none"
-                rows="4"
-                placeholder="Your Message"
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              className="bg-coral-400 text-black px-6 py-3 rounded-lg font-semibold hover:bg-coral-500 transition-colors"
+    <div className="bg-gradient-to-br from-black to-gray-900 min-h-screen flex items-center justify-center px-4 py-12 overflow-hidden">
+      {floatingIcons.map((Icon, index) => (
+        <motion.div
+          key={index}
+          className="absolute text-[#c5ac5a] opacity-20"
+          initial={{ x: "-100%", y: "-100%" }}
+          animate={{
+            x: ["100%", "-100%"],
+            y: ["100%", "-100%"],
+          }}
+          transition={{
+            repeat: Number.POSITIVE_INFINITY,
+            repeatType: "reverse",
+            duration: 20 + index * 5,
+            ease: "linear",
+          }}
+        >
+          <Icon size={50 + index * 20} />
+        </motion.div>
+      ))}
+      <motion.div
+        className="bg-black bg-opacity-10 backdrop-blur-lg rounded-xl p-8 max-w-md w-full relative z-10 border border-[#c5ac5a]"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.h1
+          className="text-4xl font-bold text-center text-white mb-8"
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        >
+          Get in Touch
+        </motion.h1>
+        <motion.p
+          className="text-gray-300 text-center mb-8"
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2, type: "spring", stiffness: 300, damping: 20 }}
+        >
+          Ready to rock? Reach out to us for any inquiries, collaborations, or just to say hello!
+        </motion.p>
+        <motion.div className="space-y-6">
+          {contactInfo.map((item, index) => (
+            <motion.a
+              key={index}
+              href={item.href}
+              className="flex items-center space-x-4 text-white hover:text-[#c5ac5a] transition-colors duration-300 group relative"
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onHoverStart={() => setHoveredIndex(index)}
+              onHoverEnd={() => setHoveredIndex(null)}
             >
-              Send Message
-            </button>
-          </form>
-        </div>
-      </div>
-    </section>
-  );
-};
+              <motion.div
+                className="bg-[#c5ac5a] p-3 rounded-full group-hover:bg-white transition-colors duration-300"
+                whileHover={{ rotate: 360 }}
+                transition={{ type: "spring", stiffness: 300, damping: 10 }}
+              >
+                <item.icon size={24} className="text-black" />
+              </motion.div>
+              <span className="text-lg">{item.text}</span>
+              <AnimatePresence>
+                {hoveredIndex === index && (
+                  <motion.div
+                    className="absolute -inset-2 bg-[#c5ac5a] opacity-20 rounded-lg z-[-1]"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    exit={{ scale: 0 }}
+                  />
+                )}
+              </AnimatePresence>
+            </motion.a>
+          ))}
+        </motion.div>
+        <motion.div className="mt-12 text-center" variants={itemVariants}>
+          <p className="text-gray-400">Let&apos;s create unforgettable moments together!</p>
+        </motion.div>
+      </motion.div>
+    </div>
+  )
+}
 
 export default AboutUs;
 
