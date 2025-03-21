@@ -29,27 +29,28 @@ export const fragranceFamilies = [
   
   export const categories = [
     {
-      title: 'Perfumes',
-      image: 'https://public.readdy.ai/ai/img_res/0a3432c9f07ba26a4eb1fc5fa96495f7.jpg',
-      description: 'Premium Fragrances',
+      title: "Perfumes",
+      image: "https://public.readdy.ai/ai/img_res/0a3432c9f07ba26a4eb1fc5fa96495f7.jpg",
+      description: "Premium Fragrances",
     },
     {
-      title: 'Perfume Oils',
-      image: 'https://public.readdy.ai/ai/img_res/6dfff8f62cf4ff811ab28645f9ac92c4.jpg',
-      description: 'Concentrated Essences',
+      title: "Perfume Oils",
+      image: "https://public.readdy.ai/ai/img_res/6dfff8f62cf4ff811ab28645f9ac92c4.jpg",
+      description: "Concentrated Essences",
     },
     {
-      title: 'Diffusers',
-      image: 'https://public.readdy.ai/ai/img_res/13f4a0fd04887897530e870d57066212.jpg',
-      description: 'Ambient Fragrances',
+      title: "Diffusers",
+      image: "https://public.readdy.ai/ai/img_res/13f4a0fd04887897530e870d57066212.jpg",
+      description: "Ambient Fragrances",
     },
     {
-      title: 'Body Sprays',
-      image: 'https://public.readdy.ai/ai/img_res/457a07b469de974c45aae6a55ef27c0e.jpg',
-      description: 'Refreshing Mist',
+      title: "Body Sprays",
+      image: "https://public.readdy.ai/ai/img_res/457a07b469de974c45aae6a55ef27c0e.jpg",
+      description: "Refreshing Mist",
     },
   ];
   
+ 
   export const featuredProducts = [
     {
       name: 'Lavender Dreams',
@@ -106,3 +107,31 @@ export const fragranceFamilies = [
       image: 'https://public.readdy.ai/ai/img_res/4dfd88b715ede772e147271f0bd70507.jpg',
     },
   ];
+  export const diffuserProducts = [
+    {
+      name: "Lavender Mist Diffuser",
+      price: 79.99,
+      scent: "lavender",
+      image: "https://public.readdy.ai/ai/img_res/13f4a0fd04887897530e870d57066212.jpg",
+    },
+    {
+      name: "Cedar Breeze Diffuser",
+      price: 89.99,
+      scent: "cedar",
+      image: "https://public.readdy.ai/ai/img_res/1a29ebdfe7e85ca42749ecafd0e0da89.jpg",
+    },
+    {
+      name: "Vanilla Glow Diffuser",
+      price: 69.99,
+      scent: "vanilla",
+      image: "https://public.readdy.ai/ai/img_res/afe5eebe00396db2e7f67d236dd268eb.jpg",
+    },
+    {
+      name: "Amber Harmony Diffuser",
+      price: 99.99,
+      scent: "amber",
+      image: "https://public.readdy.ai/ai/img_res/3757e884b2f131230af5fd3a5653789f.jpg",
+    },
+  ];
+  
+  // . rest of your existing data (fragranceFamilies, heroSlides, etc.)
