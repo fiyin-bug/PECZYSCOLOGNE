@@ -60,8 +60,8 @@ export const Perfumes = ({ addToCart }) => {
                 </div>
               </div>
               <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
-              <p className="text-coral-400">${product.price}</p>
-              <p className="text-gray-400 text-sm capitalize">{product.family}</p>
+              <p className="text-coral-400">{product.price}</p>
+              {/* <p className="text-gray-400 text-sm capitalize">{product.family}</p> */}
             </div>
           ))}
         </div>
@@ -84,7 +84,7 @@ export const Perfumes = ({ addToCart }) => {
               />
               <div className="flex flex-col justify-center">
                 <h3 className="text-2xl font-bold mb-4">{selectedProduct.name}</h3>
-                <p className="text-coral-400 text-xl mb-4">${selectedProduct.price}</p>
+                <p className="text-coral-400 text-xl mb-4">{selectedProduct.price}</p>
                 <p className="text-gray-400 mb-4">
                   Fragrance Family: <span className="capitalize">{selectedProduct.family}</span>
                 </p>
