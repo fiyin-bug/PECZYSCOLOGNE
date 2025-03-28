@@ -1,5 +1,8 @@
 // data.js
 import seventeen from './assets/Images/seventeen.jpeg';
+import eighteen from './assets/Images/eighteen.jpeg';
+import twentytwo from './assets/Images/twenty two.jpeg';
+import twentysix from './assets/Images/twentysix.jpeg';
 export const fragranceFamilies = [
     { id: 'all', name: 'All Fragrances' },
     { id: 'lavender', name: 'Lavender' },
@@ -19,19 +22,19 @@ export const fragranceFamilies = [
   
   export const heroSlides = [
     {
-      image: 'src/assets/Images/eighteen.jpeg',
+      image: eighteen,
       title: 'Discover Your Signature Scent',
       subtitle: 'Luxury Fragrances for the Distinguished',
       description: 'Experience the art of perfumery with our exclusive collection of premium fragrances.',
     },
     {
-      image: 'src/assets/Images/twenty two.jpeg',
+      image: twentytwo,
       title: 'The Essence of Luxury',
       subtitle: 'Crafted for Perfection',
       description: 'Each fragrance tells a unique story, carefully composed by master perfumers.',
     },
     {
-      image: 'src/assets/Images/twentysix.jpeg',
+      image: twentysix,
       title: 'The Soul of Elegance',
       subtitle: 'Sculpted in Scent',
       description:'Every note weaves an exquisite tale, artfully blended by the world’s finest perfumers',
@@ -73,7 +76,7 @@ export const fragranceFamilies = [
       name: 'Golden Allure 70ml',
       price: '₦210,000',
       family: ['Floral', 'Amber', 'Grapefruit'],
-      image: 'src/assets/Images/seventeen.jpeg',
+      image: {seventeen}
     },
     {
       name: 'Wild elegance 50ml',
