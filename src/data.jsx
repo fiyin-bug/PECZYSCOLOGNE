@@ -1,4 +1,5 @@
 // data.js
+import seventeen from './assets/Images/seventeen.jpeg';
 export const fragranceFamilies = [
     { id: 'all', name: 'All Fragrances' },
     { id: 'lavender', name: 'Lavender' },
