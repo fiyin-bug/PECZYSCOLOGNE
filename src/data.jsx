@@ -7,6 +7,10 @@ import eleven from './assets/Images/eleven.jpeg';
 import eighteen from './assets/Images/eighteen.jpeg';
 import twentytwo from './assets/Images/twenty two.jpeg';
 import twentysix from './assets/Images/twentysix.jpeg';
+import ten from './assets/Images/ten.jpeg';
+import twenty from './assets/Images/twenty.jpeg';
+import twentyone from './assets/Images/twentyone.jpeg';
+import fourteen from './assets/Images/fourteen.jpeg'
 export const fragranceFamilies = [
     { id: 'all', name: 'All Fragrances' },
     { id: 'lavender', name: 'Lavender' },
@@ -146,25 +150,25 @@ export const oilFragranceFamilies = [
 export const featuredOilProducts = [
   {
     name: "Amber Bliss",
-    image: "https://public.readdy.ai/ai/img_res/3757e884b2f131230af5fd3a5653789f.jpg",
+    image: ten,
     price: 45,
     family: "amber",
   },
   {
     name: "Sandalwood Dream",
-    image: 'https://public.readdy.ai/ai/img_res/c5cdc596794835ab5dbade7bc8ae446f.jpg',
+    image: twenty,
     price: 50,
     family: "sandalwood",
   },
   {
     name: "Rose Elixir",
-    image: 'https://public.readdy.ai/ai/img_res/c5cdc596794835ab5dbade7bc8ae446f.jpg',
+    image: twentyone,
     price: 40,
     family: "floral",
   },
   {
     name: "Oud Majesty",
-    image: 'https://public.readdy.ai/ai/img_res/4dfd88b715ede772e147271f0bd70507.jpg',
+    image: fourteen,
     price: 60,
     family: "oud",
   },
