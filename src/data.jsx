@@ -1,5 +1,9 @@
 // data.js
 import seventeen from './assets/Images/seventeen.jpeg';
+import fifteen from './assets/Images/fifteen.jpeg';
+import one from './assets/Images/one.jpeg';
+import nine from './assets/Images/nine.jpeg';
+import eleven from './assets/Images/eleven.jpeg';
 import eighteen from './assets/Images/eighteen.jpeg';
 import twentytwo from './assets/Images/twenty two.jpeg';
 import twentysix from './assets/Images/twentysix.jpeg';
@@ -76,31 +80,31 @@ export const fragranceFamilies = [
       name: 'Golden Allure 70ml',
       price: '₦210,000',
       family: ['Floral', 'Amber', 'Grapefruit'],
-      image: {seventeen}
+      image: seventeen,
     },
     {
       name: 'Wild elegance 50ml',
       price: '₦254,000',
       family: ['Bergamot', 'Woody', 'Warm Spicy'],
-      image: 'src/assets/Images/fifteen.jpeg',
+      image: fifteen,
     },
     {
       name: 'Classic Charm 50ml',
       price: '₦193,000',
       family: ['Amber', 'Vanilla', 'Rose'],
-      image: 'src/assets/Images/one.jpeg',
+      image: one,
     },
     {
       name: 'Zesty Allure 50ml',
       price: '₦200,000',
       family: ['Warm Spicy', 'Woody', 'Grapefruit'],
-      image: 'src/assets/Images/nine.jpeg',
+      image: nine,
     },
     {
       name: 'Eternal Dusk 60ml',
       price: '₦320,000',
       family: ['Woody', 'Amber', 'Cardamom'],
-      image: 'src/assets/Images/eleven.jpeg',
+      image: eleven,
     },
   ];
   export const diffuserProducts = [
