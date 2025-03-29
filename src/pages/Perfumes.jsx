@@ -9,7 +9,7 @@ export const Perfumes = ({ addToCart }) => {
   const filteredProducts =
     selectedFamily === "all"
       ? featuredProducts
-      : featuredProducts.filter((product) => product.family === selectedFamily);
+      : featuredProducts.filter((product) => product.family.includes(selectedFamily));
 
   const handleProductClick = (product) => {
     setSelectedProduct(product);
@@ -24,7 +24,7 @@ export const Perfumes = ({ addToCart }) => {
   return (
     <section className="py-20 bg-gray-900">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-12 text-center">Featured Perfumes</h2>
+        <h2 className="text-3xl font-bold mb-12 text-center text-white">Featured Perfumes</h2>
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {fragranceFamilies.map((family) => (
             <button
@@ -41,29 +41,33 @@ export const Perfumes = ({ addToCart }) => {
           ))}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {filteredProducts.map((product, index) => (
-            <div
-              key={index}
-              className="group cursor-pointer"
-              onClick={() => handleProductClick(product)}
-            >
-              <div className="relative overflow-hidden rounded-lg mb-4">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <button className="bg-white text-black p-3 rounded-full hover:bg-coral-400 transition-colors">
-                    <i className="fas fa-shopping-bag"></i>
-                  </button>
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((product, index) => (
+              <div
+                key={index}
+                className="group cursor-pointer"
+                onClick={() => handleProductClick(product)}
+              >
+                <div className="relative overflow-hidden rounded-lg mb-4">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button className="bg-white text-black p-3 rounded-full hover:bg-coral-400 transition-colors">
+                      <i className="fas fa-shopping-bag"></i>
+                    </button>
+                  </div>
                 </div>
+                <h3 className="text-lg font-semibold mb-2 text-white">{product.name}</h3>
+                <p className="text-coral-400">{product.price}</p>
+                <p className="text-gray-400 text-sm capitalize">{product.family.join(', ')}</p>
               </div>
-              <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
-              <p className="text-coral-400">{product.price}</p>
-              {/* <p className="text-gray-400 text-sm capitalize">{product.family}</p> */}
-            </div>
-          ))}
+            ))
+          ) : (
+            <p className="text-white text-center col-span-full">No products found for this family.</p>
+          )}
         </div>
       </div>
 
@@ -83,14 +87,14 @@ export const Perfumes = ({ addToCart }) => {
                 className="w-full md:w-1/2 h-96 object-cover rounded-lg"
               />
               <div className="flex flex-col justify-center">
-                <h3 className="text-2xl font-bold mb-4">{selectedProduct.name}</h3>
+                <h3 className="text-2xl font-bold mb-4 text-white">{selectedProduct.name}</h3>
                 <p className="text-coral-400 text-xl mb-4">{selectedProduct.price}</p>
                 <p className="text-gray-400 mb-4">
-                  Fragrance Family: <span className="capitalize">{selectedProduct.family}</span>
+                  Fragrance Family: <span className="capitalize">{selectedProduct.family.join(', ')}</span>
                 </p>
                 <button
                   onClick={() => handleAddToCart(selectedProduct)}
-                  className="bg-coral-400 text-black px-6 py-3 text-lg font-semibold rounded-lg hover:bg-coral-500 transition-colors"
+                  className="bg-black text-white px-6 py-3 text-lg font-semibold rounded-lg hover:bg-gray-800 transition-colors"
                 >
                   Add to Cart
                 </button>

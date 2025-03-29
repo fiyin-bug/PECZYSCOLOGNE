@@ -9,24 +9,26 @@ import twentytwo from './assets/Images/twenty two.jpeg';
 import twentysix from './assets/Images/twentysix.jpeg';
 import ten from './assets/Images/ten.jpeg';
 import twenty from './assets/Images/twenty.jpeg';
-import twentyone from './assets/Images/twentyone.jpeg';
-import fourteen from './assets/Images/fourteen.jpeg'
+import twentyone from './assets/Images/twenty one.jpeg';
+import fourteen from './assets/Images/fourteen.jpeg';
+
 export const fragranceFamilies = [
-    { id: 'all', name: 'All Fragrances' },
-    { id: 'lavender', name: 'Lavender' },
-    { id: 'cedar', name: 'Cedar' },
-    { id: 'tobacco', name: 'Tobacco' },
-    { id: 'cinnamon', name: 'Cinnamon' },
-    { id: 'vanilla', name: 'Vanilla' },
-    { id: 'amber', name: 'Amber' },
-    { id: 'woody', name: 'Woody' },
-    { id: 'floral', name: 'Floral' },
-    { id: 'bergamot', name: 'Bergamot' },
-    { id: 'grapefruit', name: 'Grapefruit' },
-    { id: 'warm spicy', name: 'Warm Spicy' },
-    { id: 'rose', name: 'Rose' },
-    { id: 'cardamom', name: 'Cardamom' }
-  ];
+  { id: 'all', name: 'All Fragrances' },
+  { id: 'lavender', name: 'Lavender' },
+  { id: 'cedar', name: 'Cedar' },
+  { id: 'tobacco', name: 'Tobacco' },
+  { id: 'cinnamon', name: 'Cinnamon' },
+  { id: 'vanilla', name: 'Vanilla' },
+  { id: 'amber', name: 'Amber' },
+  { id: 'woody', name: 'Woody' },
+  { id: 'floral', name: 'Floral' },
+  { id: 'bergamot', name: 'Bergamot' },
+  { id: 'grapefruit', name: 'Grapefruit' },
+  { id: 'warm-spicy', name: 'Warm Spicy' }, // Standardized id
+  { id: 'rose', name: 'Rose' },
+  { id: 'cardamom', name: 'Cardamom' },
+];
+
   
   export const heroSlides = [
     {
@@ -79,38 +81,40 @@ export const fragranceFamilies = [
   ];
   
  
-  export const featuredProducts = [
-    {
-      name: 'Golden Allure 70ml',
-      price: '₦210,000',
-      family: ['Floral', 'Amber', 'Grapefruit'],
-      image: seventeen,
-    },
-    {
-      name: 'Wild elegance 50ml',
-      price: '₦254,000',
-      family: ['Bergamot', 'Woody', 'Warm Spicy'],
-      image: fifteen,
-    },
-    {
-      name: 'Classic Charm 50ml',
-      price: '₦193,000',
-      family: ['Amber', 'Vanilla', 'Rose'],
-      image: one,
-    },
-    {
-      name: 'Zesty Allure 50ml',
-      price: '₦200,000',
-      family: ['Warm Spicy', 'Woody', 'Grapefruit'],
-      image: nine,
-    },
-    {
-      name: 'Eternal Dusk 60ml',
-      price: '₦320,000',
-      family: ['Woody', 'Amber', 'Cardamom'],
-      image: eleven,
-    },
-  ];
+  
+
+export const featuredProducts = [
+  {
+    name: 'Golden Allure 70ml',
+    price: '₦210,000',
+    family: ['floral', 'amber', 'grapefruit'], // Lowercase for consistency
+    image: seventeen,
+  },
+  {
+    name: 'Wild Elegance 50ml',
+    price: '₦254,000',
+    family: ['bergamot', 'woody', 'warm-spicy'], // Matches id
+    image: fifteen,
+  },
+  {
+    name: 'Classic Charm 50ml',
+    price: '₦193,000',
+    family: ['amber', 'vanilla', 'rose'],
+    image: one,
+  },
+  {
+    name: 'Zesty Allure 50ml',
+    price: '₦200,000',
+    family: ['warm-spicy', 'woody', 'grapefruit'],
+    image: nine,
+  },
+  {
+    name: 'Eternal Dusk 60ml',
+    price: '₦320,000',
+    family: ['woody', 'amber', 'cardamom'],
+    image: eleven,
+  },
+];
   export const diffuserProducts = [
     {
       name: "Lavender Mist Diffuser",
@@ -151,25 +155,25 @@ export const featuredOilProducts = [
   {
     name: "Amber Bliss",
     image: ten,
-    price: 45,
+    price: 15000,
     family: "amber",
   },
   {
     name: "Sandalwood Dream",
     image: twenty,
-    price: 50,
+    price: 15000,
     family: "sandalwood",
   },
   {
     name: "Rose Elixir",
     image: twentyone,
-    price: 40,
+    price: 20000,
     family: "floral",
   },
   {
     name: "Oud Majesty",
     image: fourteen,
-    price: 60,
+    price: 20000,
     family: "oud",
   },
 ];
