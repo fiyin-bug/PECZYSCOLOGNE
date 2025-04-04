@@ -2,6 +2,7 @@
 import seventeen from './assets/Images/seventeen.jpeg';
 import fifteen from './assets/Images/fifteen.jpeg';
 import one from './assets/Images/one.jpeg';
+import two from './assets/Images/two.jpeg';
 import nine from './assets/Images/nine.jpeg';
 import eleven from './assets/Images/eleven.jpeg';
 import eighteen from './assets/Images/eighteen.jpeg';
@@ -11,6 +12,17 @@ import ten from './assets/Images/ten.jpeg';
 import twenty from './assets/Images/twenty.jpeg';
 import twentyone from './assets/Images/twenty one.jpeg';
 import fourteen from './assets/Images/fourteen.jpeg';
+import thirteen from './assets/Images/thirteen.jpeg'; 
+import twelve from './assets/Images/twelve.jpeg';
+// import three from './assets/Images/three.jpeg';
+import four from './assets/Images/four.jpeg';
+// import five from './assets/Images/five.jpeg';
+import six from './assets/Images/six.jpeg';
+import seven from './assets/Images/seven.jpeg';
+import eight from './assets/Images/eight.jpeg';
+// import twentyfour from './assets/Images/twentyfour.jpeg';
+// import twentyfive from './assets/Images/twentyfive.jpeg';
+
 
 export const fragranceFamilies = [
   { id: 'all', name: 'All Fragrances' },
@@ -73,48 +85,92 @@ export const fragranceFamilies = [
       image: "https://public.readdy.ai/ai/img_res/13f4a0fd04887897530e870d57066212.jpg",
       description: "Ambient Fragrances",
     },
-    {
-      title: "Body Sprays",
-      image: "https://public.readdy.ai/ai/img_res/457a07b469de974c45aae6a55ef27c0e.jpg",
-      description: "Refreshing Mist",
-    },
+    
   ];
   
  
   
 
-export const featuredProducts = [
-  {
-    name: 'Golden Allure 70ml',
-    price: '₦210,000',
-    family: ['floral', 'amber', 'grapefruit'], // Lowercase for consistency
-    image: seventeen,
-  },
-  {
-    name: 'Wild Elegance 50ml',
-    price: '₦254,000',
-    family: ['bergamot', 'woody', 'warm-spicy'], // Matches id
-    image: fifteen,
-  },
-  {
-    name: 'Classic Charm 50ml',
-    price: '₦193,000',
-    family: ['amber', 'vanilla', 'rose'],
-    image: one,
-  },
-  {
-    name: 'Zesty Allure 50ml',
-    price: '₦200,000',
-    family: ['warm-spicy', 'woody', 'grapefruit'],
-    image: nine,
-  },
-  {
-    name: 'Eternal Dusk 60ml',
-    price: '₦320,000',
-    family: ['woody', 'amber', 'cardamom'],
-    image: eleven,
-  },
-];
+  export const featuredProducts = [
+    {
+      id: 'fp1', // Unique ID
+      name: 'Golden Allure 70ml',
+      price: '₦210,000',
+      family: ['floral', 'amber', 'grapefruit'],
+      image: seventeen,
+    },
+    {
+      id: 'fp2', // Unique ID
+      name: 'Wild Elegance 50ml',
+      price: '₦254,000',
+      family: ['bergamot', 'woody', 'warm-spicy'],
+      image: fifteen,
+    },
+    {
+      id: 'fp3', // Unique ID
+      name: 'Classic Charm 50ml',
+      price: '₦193,000',
+      family: ['amber', 'vanilla', 'rose'],
+      image: one,
+    },
+    {
+      id: 'fp4', // Unique ID
+      name: 'Zesty Allure 50ml',
+      price: '₦200,000',
+      family: ['warm-spicy', 'woody', 'grapefruit'],
+      image: nine,
+    },
+    {
+      id: 'fp5', // Unique ID
+      name: 'Eternal Dusk 60ml',
+      price: '₦320,000',
+      family: ['woody', 'amber', 'cardamom'],
+      image: eleven,
+    },
+  ];
+  
+  export const modalPerfumeProducts = [
+    {
+      id: 'fp1', // Matches featuredProducts ID
+      name: 'Golden Allure 70ml', // Optional: Keep if needed in modal/cart
+      price: '₦210,000',         // Optional: Keep if needed in modal/cart
+      family: ['floral', 'amber', 'grapefruit'], // Optional: Keep if needed
+      images: [seventeen, thirteen, twelve], // Correct syntax: images array
+      description:'Bold and glamorous fragrance designed for women who want to make a statement.'
+    },
+    {
+      id: 'fp2', // Matches featuredProducts ID
+      name: 'Wild Elegance 50ml',
+      price: '₦254,000',
+      family: ['bergamot', 'woody', 'warm-spicy'],
+      images: [fifteen, eighteen], // Correct syntax: images array
+      description:'Unique and captivating scent, perfect for men who want a fragrance thats both masculine and sophisticated.'
+    },
+    {
+      id: 'fp3', // Matches featuredProducts ID
+      name: 'Classic Charm 50ml',
+      price: '₦193,000',
+      family: ['amber', 'vanilla', 'rose'],
+      images: [one, two, eight], // Correct syntax: images array
+      description:'Timeless choice for women who appreciate classic elegance.'
+    },
+    {
+      id: 'fp4', // Matches featuredProducts ID
+      name: 'Zesty Allure 50ml',
+      price: '₦200,000',
+      family: ['warm-spicy', 'woody', 'grapefruit'],
+      images: [nine, seven], // Correct syntax: images array
+      description:'Fresh and vibrant fragrance that captures the energy and spirit of a sporty lifestyle.'
+    },
+    {
+      id: 'fp5', // Matches featuredProducts ID
+      name: 'Eternal Dusk 60ml',
+      price: '₦320,000',
+      family: ['woody', 'amber', 'cardamom'],
+      images: [eleven, four, six], // Correct syntax: images array
+      description:'Luxurious and sensual fragrance for men who want a scent thats both powerful and elegant.'
+    },
+  ];
   export const diffuserProducts = [
     {
       name: "Lavender Mist Diffuser",

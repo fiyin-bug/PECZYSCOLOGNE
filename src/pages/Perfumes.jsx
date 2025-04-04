@@ -1,38 +1,77 @@
 import React, { useState } from "react";
-import { fragranceFamilies, featuredProducts } from "../data";
+// Import all necessary data sources
+import {
+    fragranceFamilies,
+    featuredProducts,        // For the grid
+    modalPerfumeProducts     // For the modal details
+} from "../data"; // Adjust path if needed
 
+// Import the external modal component - ENSURE PATH AND NAME ARE CORRECT
+import ProductDetailModal from "../pages/ProductDetailModel"; // Corrected path/name based on your previous import
+
+// Component name uses PascalCase convention
 export const Perfumes = ({ addToCart }) => {
   const [selectedFamily, setSelectedFamily] = useState("all");
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  // State to hold the *detailed* data object for the modal
+  const [selectedModalData, setSelectedModalData] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const filteredProducts =
+  // Filter the GRID products using featuredProducts
+  const filteredGridProducts =
     selectedFamily === "all"
       ? featuredProducts
-      : featuredProducts.filter((product) => product.family.includes(selectedFamily));
+      : featuredProducts.filter((product) =>
+          product.family?.includes(selectedFamily) // Safe navigation
+        );
 
-  const handleProductClick = (product) => {
-    setSelectedProduct(product);
-    setIsModalOpen(true);
+  // --- Modal Handlers ---
+  const handleProductClick = (gridProduct) => {
+    // Find the corresponding detailed product data using the ID
+    // Ensure gridProduct has an 'id' and it matches an 'id' in modalPerfumeProducts
+    if (!gridProduct.id) {
+        console.error("Clicked product is missing an ID:", gridProduct);
+        return; // Stop if no ID to match
+    }
+    const detailedData = modalPerfumeProducts.find(
+      (modalProd) => modalProd.id === gridProduct.id
+    );
+
+    if (detailedData) {
+      setSelectedModalData(detailedData); // Store the DETAILED data
+      setIsModalOpen(true);
+    } else {
+      // Log a warning if details aren't found - check IDs in data.js!
+      console.warn(`Modal details not found for product ID: ${gridProduct.id}. Check data.js for matching IDs.`);
+      // Decide on fallback behavior (e.g., show simple modal or do nothing)
+    }
   };
 
-  const handleAddToCart = (product) => {
-    addToCart(product);
+  const handleCloseModal = () => {
     setIsModalOpen(false);
+    setSelectedModalData(null); // Clear detailed data on close
+  };
+
+  // This function gets passed to the modal
+  const handleAddToCartFromModal = (productDataForCart) => {
+    // Pass the relevant product data (might be the detailed one) to the parent handler
+    addToCart(productDataForCart);
+    handleCloseModal(); // Close modal after action
   };
 
   return (
     <section className="py-20 bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold mb-12 text-center text-white">Featured Perfumes</h2>
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        {/* Filter Buttons */}
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-12">
           {fragranceFamilies.map((family) => (
             <button
+              // Use the unique ID from fragranceFamilies for the key
               key={family.id}
               onClick={() => setSelectedFamily(family.id)}
-              className={`px-6 py-2 rounded-lg whitespace-nowrap transition-colors ${
+              className={`px-4 py-2 sm:px-6 text-sm sm:text-base rounded-lg whitespace-nowrap transition-colors duration-200 ${
                 selectedFamily === family.id
-                  ? "bg-coral-400 text-black"
+                  ? "bg-coral-400 text-black font-semibold"
                   : "bg-gray-800 text-white hover:bg-gray-700"
               }`}
             >
@@ -40,29 +79,33 @@ export const Perfumes = ({ addToCart }) => {
             </button>
           ))}
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map((product, index) => (
+
+        {/* Product Grid - Uses filteredGridProducts */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          {filteredGridProducts.length > 0 ? (
+            filteredGridProducts.map((product) => ( // product is from featuredProducts
               <div
-                key={index}
-                className="group cursor-pointer"
-                onClick={() => handleProductClick(product)}
+                // Use the unique ID from featuredProducts for the key - CRITICAL FIX
+                key={product.id}
+                className="group cursor-pointer bg-gray-850 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col"
+                onClick={() => handleProductClick(product)} // Pass the simple grid product
               >
-                <div className="relative overflow-hidden rounded-lg mb-4">
+                {/* Card Image */}
+                <div className="relative overflow-hidden h-80">
                   <img
-                    src={product.image}
+                    src={product.image} // Display single image from grid data
                     alt={product.name}
-                    className="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <button className="bg-white text-black p-3 rounded-full hover:bg-coral-400 transition-colors">
-                      <i className="fas fa-shopping-bag"></i>
-                    </button>
-                  </div>
                 </div>
-                <h3 className="text-lg font-semibold mb-2 text-white">{product.name}</h3>
-                <p className="text-coral-400">{product.price}</p>
-                <p className="text-gray-400 text-sm capitalize">{product.family.join(', ')}</p>
+                {/* Card Text */}
+                <div className="p-4 flex flex-col flex-grow">
+                  <h3 className="text-lg font-semibold mb-2 text-white truncate">{product.name}</h3>
+                  <p className="text-coral-400 mb-2">{product.price}</p>
+                  <p className="text-gray-400 text-sm capitalize mt-auto">
+                    {product.family?.join(', ') || 'N/A'}
+                  </p>
+                </div>
               </div>
             ))
           ) : (
@@ -71,40 +114,17 @@ export const Perfumes = ({ addToCart }) => {
         </div>
       </div>
 
-      {isModalOpen && selectedProduct && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-gray-800 rounded-lg p-8 max-w-2xl w-full relative">
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white"
-            >
-              <i className="fas fa-times"></i>
-            </button>
-            <div className="flex flex-col md:flex-row gap-8">
-              <img
-                src={selectedProduct.image}
-                alt={selectedProduct.name}
-                className="w-full md:w-1/2 h-96 object-cover rounded-lg"
-              />
-              <div className="flex flex-col justify-center">
-                <h3 className="text-2xl font-bold mb-4 text-white">{selectedProduct.name}</h3>
-                <p className="text-coral-400 text-xl mb-4">{selectedProduct.price}</p>
-                <p className="text-gray-400 mb-4">
-                  Fragrance Family: <span className="capitalize">{selectedProduct.family.join(', ')}</span>
-                </p>
-                <button
-                  onClick={() => handleAddToCart(selectedProduct)}
-                  className="bg-black text-white px-6 py-3 text-lg font-semibold rounded-lg hover:bg-gray-800 transition-colors"
-                >
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Modal Section - Render the external component */}
+      {/* Pass the DETAILED data object found via ID to the modal */}
+      <ProductDetailModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        product={selectedModalData} // This holds the object from modalPerfumeProducts
+        onAddToCart={handleAddToCartFromModal}
+      />
     </section>
   );
 };
 
+// Default export might be needed depending on how you import it elsewhere
 export default Perfumes;
