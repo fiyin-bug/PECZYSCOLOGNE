@@ -125,7 +125,7 @@ export const fragranceFamilies = [
       name: 'Eternal Dusk 60ml',
       price: '₦320,000',
       family: ['woody', 'amber', 'cardamom'],
-      image: eleven,
+      image: four,
     },
   ];
   
