@@ -3,7 +3,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 // --- DEFINE YOUR WHATSAPP NUMBER HERE ---
-const WHATSAPP_NUMBER = "2347013084388"; // Example: Corrected Nigerian format
+const WHATSAPP_NUMBER = "2349151971441"; // Example: Corrected Nigerian format
 
 export const CartPage = ({ cart, setCart }) => {
 
